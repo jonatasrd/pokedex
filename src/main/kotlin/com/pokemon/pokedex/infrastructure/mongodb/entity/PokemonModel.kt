@@ -1,5 +1,6 @@
 package com.pokemon.pokedex.infrastructure.mongodb.entity
 
+import com.pokemon.pokedex.domain.Pokemon
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
@@ -34,5 +35,16 @@ data class PokemonModel(
         combatSkills = combatSkills
     )
 }
+
+internal fun PokemonModel.toDomain() = Pokemon(
+    id = this.id,
+    name = this.name,
+    specie = this.specie.toDomain(),
+    weight = this.weight,
+    height = this.height,
+    baseExperience = this.baseExperience,
+    abilities = this.abilities.toDomain(),
+    combatSkills = this.combatSkills.toDomain()
+)
 
 

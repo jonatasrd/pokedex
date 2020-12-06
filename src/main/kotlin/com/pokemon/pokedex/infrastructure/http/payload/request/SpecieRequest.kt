@@ -2,11 +2,13 @@ package com.pokemon.pokedex.infrastructure.http.payload.request
 
 import com.pokemon.pokedex.domain.Specie
 import io.swagger.v3.oas.annotations.media.Schema
+import io.swagger.v3.oas.annotations.tags.Tag
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
 
+@Tag(name = "SpecieRequest")
 data class SpecieRequest(
 
     @NotBlank

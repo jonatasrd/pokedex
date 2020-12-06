@@ -1,5 +1,6 @@
 package com.pokemon.pokedex.domain
 
+import com.pokemon.pokedex.infrastructure.http.payload.response.PokemonResponse
 import com.pokemon.pokedex.infrastructure.mongodb.entity.PokemonModel
 
 data class Pokemon(
@@ -40,4 +41,14 @@ internal fun Pokemon.toModel() = PokemonModel(
     baseExperience = this.baseExperience,
     abilities = this.abilities.toModel(),
     combatSkills = this.combatSkills.toModel()
+)
+
+internal fun Pokemon.toResponse() = PokemonResponse(
+    name = this.name,
+    specie = this.specie.toResponse(),
+    weight = this.weight,
+    height = this.height,
+    baseExperience = this.baseExperience,
+    abilities = this.abilities.toResponse(),
+    combatSkills = this.combatSkills.toResponse()
 )

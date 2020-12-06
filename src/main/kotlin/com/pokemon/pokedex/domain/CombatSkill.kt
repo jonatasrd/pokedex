@@ -1,5 +1,6 @@
 package com.pokemon.pokedex.domain
 
+import com.pokemon.pokedex.infrastructure.http.payload.response.CombatSkillResponse
 import com.pokemon.pokedex.infrastructure.mongodb.entity.CombatSkillModel
 
 data class CombatSkill(
@@ -14,3 +15,11 @@ internal fun CombatSkill.toModel() =
     )
 
 internal fun Set<CombatSkill>.toModel() = this.mapTo(HashSet()) { it.toModel() }
+
+internal fun CombatSkill.toResponse() =
+    CombatSkillResponse(
+        name = this.name,
+        strength = this.strength
+    )
+
+internal fun Set<CombatSkill>.toResponse() = this.mapTo(HashSet()) { it.toResponse() }
